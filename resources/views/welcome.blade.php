@@ -13,17 +13,22 @@
           <th></th>
         </thead>
         <tbody>
+          @foreach ($jobs as $job)
           <tr>
             <td>
               <img src="{{ asset('avatar/man.jpg') }}" width="80" alt="">
             </td>
-            <td>position: web developer</td>
-            <td><i class="fa fa-map-marker"></i> address: Melbourne</td>
-            <td>date: 2019-07-26</td>
+            <td>position: {{ $job->position }}
+              <br>
+              <i class="fa fa-clock"></i> {{ $job->type }}
+            </td>
+            <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
+            <td><i class="fa fa-globe"></i> {{ $job->created_at->diffForHumans() }}</td>
             <td>
               <button class="btn btn-success btn-sm">apply</button>
             </td>
           </tr>
+          @endforeach
         </tbody>
       </table>
     </div>
