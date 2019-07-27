@@ -18,6 +18,10 @@ Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 //company
 Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
 
+// profile
+Route::get('user/profile', 'UserController@index');
+Route::post('user/profile/create', 'UserController@store')->name('profile.create');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
