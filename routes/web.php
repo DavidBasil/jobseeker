@@ -25,6 +25,10 @@ Route::post('user/coverletter', 'UserController@coverletter')->name('profile.cov
 Route::post('user/resume', 'UserController@resume')->name('profile.resume');
 Route::post('user/avatar', 'UserController@avatar')->name('profile.avatar');
 
+// employer registration
+Route::view('employer/register', 'auth.employer-register');
+Route::post('employer/register', 'EmployerController@register')->name('employer.register');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

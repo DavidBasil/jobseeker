@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Profile;
+use App\Company;
 
 class User extends Authenticatable
 {
@@ -42,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
+
 }
