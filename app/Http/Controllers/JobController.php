@@ -14,4 +14,9 @@ class JobController extends Controller
         return view('welcome', compact('jobs'));
     }
 
+    public function show($id, Job $job)
+    {
+        return view('jobs.show', compact('job'));
+    }
+
 }

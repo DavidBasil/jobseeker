@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'JobController@index');
+Route::get('/', 'JobController@index')->name('jobs.index');
+Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 
 Auth::routes();
 

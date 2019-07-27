@@ -5,13 +5,6 @@
     <div class="row">
       <h2>Recent Jobs</h2>
       <table class="table">
-        <thead>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </thead>
         <tbody>
           @foreach ($jobs as $job)
           <tr>
@@ -25,7 +18,7 @@
             <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
             <td><i class="fa fa-globe"></i> {{ $job->created_at->diffForHumans() }}</td>
             <td>
-              <button class="btn btn-success btn-sm">apply</button>
+              <a href="{{ route('jobs.show', [$job->id, $job->slug]) }}">Apply</a>
             </td>
           </tr>
           @endforeach
