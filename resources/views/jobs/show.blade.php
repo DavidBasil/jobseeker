@@ -19,7 +19,7 @@
       <div class="card">
         <div class="card-header">short info</div>
         <div class="card-body">
-          <p>Company: {{ $job->company->cname }}</p>
+          <p>Company: <a href="{{ route('company.show', [$job->company->id, $job->company->slug]) }}">{{ $job->company->cname }}</a></p>
           <p>Employment type: {{ $job->type }}</p>
           <p>Position: {{ $job->position }}</p>
           <p>Date: {{ $job->created_at->diffForHumans() }}</p>
