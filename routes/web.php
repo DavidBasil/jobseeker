@@ -21,6 +21,8 @@ Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.s
 // profile
 Route::get('user/profile', 'UserController@index');
 Route::post('user/profile/create', 'UserController@store')->name('profile.create');
+Route::post('user/coverletter', 'UserController@coverletter')->name('profile.coverletter');
+Route::post('user/resume', 'UserController@resume')->name('profile.resume');
 
 Auth::routes();
 
