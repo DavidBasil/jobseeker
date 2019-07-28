@@ -110,6 +110,26 @@
           <p>Company phone: {{ Auth::user()->company->phone }}</p>
           <p>Company website: <a href="{{ Auth::user()->company->website }}">{{ Auth::user()->company->website }}</a></p>
           <p>Company slogan: {{ Auth::user()->company->slogan }}</p>
+          <p>Company page: <a href="{{ route('company.show',[Auth::user()->company->id, Auth::user()->company->slug ]) }} ">View</a></p>
+        </div>
+      </div>
+
+      @if (session('cover_photo'))
+        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+          {{ session('cover_photo') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endif
+      <div class="card mt-3">
+        <div class="card-header">Update Cover Photo</div>
+        <div class="card-body">
+          <form action="{{ route('cover.photo') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="cover_photo">
+            <button type="submit" class="btn btn-success btn-block mt-2">Update</button>
+          </form>
         </div>
       </div>
     </div>

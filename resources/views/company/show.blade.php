@@ -4,7 +4,11 @@
   <div class="container">
     <div class="row">
       <div class="company-profile">
-        <img src="{{ asset('cover/cover.png') }}" class="w-100" alt="">
+        @if (!empty(Auth::user()->company->cover_photo))
+          <img src="{{ asset('uploads/coverphoto/') }}/{{Auth::user()->company->cover_photo}}" class="w-100" alt="">
+        @else
+          <img src="{{ asset('cover/cover.png') }}" class="w-100" alt="">
+        @endif
       </div>
       <div class="company-desc mt-2">
         <h2>{{ $company->cname }}</h2>
