@@ -8,25 +8,29 @@
     <div class="col-md-3">
 
       <!-- sessions messages -->
-      @if (session('avatar'))
+      @if (session('logo'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-          {{ session('avatar') }}
+          {{ session('logo') }}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
       @endif
 
-      <!-- avatar -->
+      <!-- logo -->
+      @if (!empty(Auth::user()->company->logo))
+        <img src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" alt="" class="w-100">  
+      @else
       <img src="{{ asset('avatar/man.jpg') }}" alt="" class="w-100">
+      @endif
 
       <!-- avatar form -->
-      <form action="{{ route('profile.avatar') }}" class="mt-3" method="post" enctype="multipart/form-data">
+      <form action="{{ route('company.logo') }}" class="mt-3" method="post" enctype="multipart/form-data">
         @csrf
-        <input type="file" name="avatar">
-        @error('avatar')
+        <input type="file" name="logo">
+        @error('logo')
         <p class="text-danger">{{ $message }}</p>
-      @enderror
+        @enderror
       <button type="submit" class="btn btn-success btn-block mt-2">update</button>
       </form>
 

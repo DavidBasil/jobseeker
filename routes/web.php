@@ -13,13 +13,16 @@
 
 // jobs
 Route::get('/', 'JobController@index')->name('jobs.index');
-Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
+Route::get('jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
+Route::get('jobs/create', 'JobController@create')->name('jobs.create');
+Route::post('jobs/store', 'JobController@store')->name('jobs.store');
 
 //company
-Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
+Route::get('company/{id}/{company}', 'CompanyController@show')->name('company.show');
 Route::get('company/create', 'CompanyController@create')->name('company.view');
 Route::post('company/store', 'CompanyController@store')->name('company.store');
 Route::post('company/coverphoto', 'CompanyController@coverphoto')->name('cover.photo');
+Route::post('company/logo', 'CompanyController@logo')->name('company.logo');
 
 // profile
 Route::get('user/profile', 'UserController@index')->name('profile.view');

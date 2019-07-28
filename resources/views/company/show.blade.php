@@ -14,7 +14,11 @@
         <h2>{{ $company->cname }}</h2>
         <p>{{ $company->description }}</p>
         <p>Slogan: {{ $company->slogan }} | Address: {{ $company->address }} | Phone: {{ $company->phone }} |  Website: {{ $company->website }}</p>
-        <img src="{{ asset('avatar/man.jpg') }}" class="w-25" alt="">
+        @if (!empty(Auth::user()->company->logo))
+          <img src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" alt="" class="w-25">  
+        @else
+          <img src="{{ asset('avatar/man.jpg') }}" alt="" class="w-100">
+        @endif
       </div>
     </div>
 
@@ -27,7 +31,7 @@
         @foreach ($company->jobs as $job)
           <tr>
             <td>
-              <img src="{{ asset('avatar/man.jpg') }}" width="80" alt="">
+              <!-- logo -->
             </td>
             <td>position: {{ $job->position }}
               <br>
