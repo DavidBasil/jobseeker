@@ -59,6 +59,9 @@
                   </li>
                 @endif
               @else
+                <li class="nav-item">
+                  <a href="{{ route('jobs.create') }}" class="nav-link">Post a job</a>
+                </li>
                 <li class="nav-item dropdown">
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     @if (Auth::user()->user_type="employer")
@@ -71,9 +74,10 @@
 
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     @if (Auth::user()->user_type='employer')
-                    <a href="{{ route('company.view') }}" class="dropdown-item">Company</a>
+                      <a href="{{ route('company.view') }}" class="dropdown-item">Company</a>
+                      <a href="{{ route('jobs.myjobs') }}" class="dropdown-item">My Jobs</a>
                     @else
-                    <a href="{{ route('profile.view') }}" class="dropdown-item">Profile</a>
+                      <a href="{{ route('profile.view') }}" class="dropdown-item">Profile</a>
                     @endif
                     <a class="dropdown-item" href="{{ route('logout') }}"
                                              onclick="event.preventDefault();

@@ -13,9 +13,12 @@
 
 // jobs
 Route::get('/', 'JobController@index')->name('jobs.index');
+Route::get('jobs/{id}/edit', 'JobController@edit')->name('jobs.edit');
+Route::post('jobs/{id}/update', 'JobController@update')->name('jobs.update');
 Route::get('jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
+Route::get('jobs/my-jobs', 'JobController@myJobs')->name('jobs.myjobs');
 
 //company
 Route::get('company/{id}/{company}', 'CompanyController@show')->name('company.show');
