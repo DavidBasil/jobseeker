@@ -9,6 +9,11 @@ use App\Http\Requests\JobStoreRequest;
 class JobController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('employer', ['except' => ['index', 'show']]);
+    }
+
     public function index()
     {
         $jobs = Job::orderBy('created_at', 'desc')->take(10)->get();

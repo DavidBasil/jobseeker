@@ -8,6 +8,11 @@ use App\Job;
 
 class CompanyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('employer', ['except' => ['show']]);
+    }
+
     public function show($id, Company $company)
     {
         $jobs = Job::where('user_id', $id)->get();

@@ -17,7 +17,7 @@
         @if (!empty(Auth::user()->company->logo))
           <img src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" alt="" class="w-25">  
         @else
-          <img src="{{ asset('avatar/man.jpg') }}" alt="" class="w-100">
+          <img src="{{ asset('avatar/man.jpg') }}" alt="" class="w-25">
         @endif
       </div>
     </div>
