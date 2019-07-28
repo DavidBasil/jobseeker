@@ -17,9 +17,11 @@ Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 
 //company
 Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
+Route::get('company/create', 'CompanyController@create')->name('company.view');
+Route::post('company/store', 'CompanyController@store')->name('company.store');
 
 // profile
-Route::get('user/profile', 'UserController@index');
+Route::get('user/profile', 'UserController@index')->name('profile.view');
 Route::post('user/profile/create', 'UserController@store')->name('profile.create');
 Route::post('user/coverletter', 'UserController@coverletter')->name('profile.coverletter');
 Route::post('user/resume', 'UserController@resume')->name('profile.resume');
