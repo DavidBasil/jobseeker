@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes(['verify' => true]);
+
 // jobs
 Route::get('/', 'JobController@index')->name('jobs.index');
 Route::get('jobs/{id}/edit', 'JobController@edit')->name('jobs.edit');
@@ -19,6 +21,10 @@ Route::get('jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
 Route::get('jobs/my-jobs', 'JobController@myJobs')->name('jobs.myjobs');
+Route::get('jobs/alljobs', 'JobController@allJobs')->name('alljobs');
+// job_user
+Route::post('applications/{id}', 'JobController@apply')->name('apply');
+Route::get('jobs/applicants', 'JobController@applicants')->name('applicants');
 
 //company
 Route::get('company/{id}/{company}', 'CompanyController@show')->name('company.show');
@@ -38,6 +44,6 @@ Route::post('user/avatar', 'UserController@avatar')->name('profile.avatar');
 Route::view('employer/register', 'auth.employer-register');
 Route::post('employer/register', 'EmployerController@register')->name('employer.register');
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');

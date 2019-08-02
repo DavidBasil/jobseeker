@@ -4,20 +4,40 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Job;
+use App\Company;
 use App\Http\Requests\JobStoreRequest;
+use Auth;
 
 class JobController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('employer', ['except' => ['index', 'show']]);
+        $this->middleware(['employer', 'verified'], ['except' => ['index', 'show', 'apply', 'allJobs']]);
     }
 
     public function index()
     {
-        $jobs = Job::orderBy('created_at', 'desc')->take(10)->get();
-        return view('welcome', compact('jobs'));
+        $jobs = Job::orderBy('created_at', 'desc')->take(10)->where('status', 1)->get();
+        $companies = Company::get()->random(9);
+        return view('welcome', compact('jobs', 'companies'));
+    }
+
+    public function allJobs(Request $request)
+    {
+        $type = $request->get('type');
+        $category = $request->get('category_id');
+
+        if($type || $category ){
+            $jobs = Job::where('type', $type)
+                ->orWhere('category_id', $category)
+                ->paginate(10);
+            return view('jobs.alljobs', compact('jobs'));
+        } else {
+            $jobs = Job::latest()->paginate(10);
+            return view('jobs.alljobs', compact('jobs'));
+        }
+
     }
 
     public function show($id, Job $job)
@@ -67,4 +87,15 @@ class JobController extends Controller
         return view('jobs.myjobs', compact('jobs'));
     }
 
+    public function apply(Request $request, $id)
+    {
+        $jobId = Job::findOrFail($id); 
+        $jobId->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('message', 'You Applied for a job');
+    }
+
+    public function applicants(){
+        $applicants = Job::has('users')->where('user_id', auth()->user()->id)->get();
+        return view('jobs.applicants', compact('applicants'));
+    }
 }

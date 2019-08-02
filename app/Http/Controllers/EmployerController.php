@@ -23,6 +23,6 @@ class EmployerController extends Controller
             'slug' => request('cname')
         ]);
 
-        return redirect()->to('login');
+        return redirect()->to('login')->with('message', 'Please verify your email by clicking the link sent to your email');
     }
 }
