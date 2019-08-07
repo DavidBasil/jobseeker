@@ -4,8 +4,8 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">{{ __('Employer Seeker Registration') }}</div>
+        <div class="card border-light">
+          <div class="card-header border-left-0 border-right-0 text-dark bg-light text-center text-uppercase mb-4">{{ __('Employer Seeker Registration') }}</div>
 
           <div class="card-body">
             <form method="POST" action="{{ route('employer.register') }}">
@@ -64,7 +64,7 @@
 
               <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-outline-info rounded-pill btn-block">
                     {{ __('Register') }}
                   </button>
                 </div>

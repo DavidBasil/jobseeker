@@ -4,8 +4,8 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">{{ __('Job Seeker Registration') }}</div>
+        <div class="card border-light">
+          <div class="card-header border-left-0 border-right-0 text-dark bg-light text-center text-uppercase mb-4">{{ __('Job Seeker Registration') }}</div>
 
           <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
@@ -58,9 +58,9 @@
               <div class="form-group row">
                 <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
-                <div class="col-md-6">
-                  <input type="radio" name="gender" value="male" required>Male
-                  <input type="radio" name="gender" value="female">Female
+                <div class="col-md-6 mt-2">
+                  <input type="radio" name="gender" value="male" required> Male
+                  <input type="radio" name="gender" value="female"> Female
 
                   @error('gender')
                   <span class="invalid-feedback" role="alert">
@@ -95,7 +95,7 @@
 
               <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-outline-info rounded-pill btn-block mt-2">
                     {{ __('Register') }}
                   </button>
                 </div>

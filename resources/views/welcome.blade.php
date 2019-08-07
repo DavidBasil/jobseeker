@@ -2,7 +2,7 @@
 @section('content')
   <div class="container">
     <div class="row">
-      <h2>Recent Jobs</h2>
+      <h2 class="mb-3">Recent Jobs</h2>
 
       <div class="row">
         <div class="col-md-12">
@@ -17,26 +17,28 @@
         </div>
       </div>
 
-      <table class="table table-hover">
-        <tbody>
-          @foreach ($jobs as $job)
-            <tr>
-              <td>
-                <img src="{{ asset('uploads/logo') }}/{{ $job->company->logo }}" width="80" alt="">
-              </td>
-              <td><small>position:</small> <span class="font-weight-bold">{{ $job->position }}</span>
-                <br>
-                <i class="fa fa-clock"></i> {{ $job->type }}
-              </td>
-              <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
-              <td><i class="fa fa-globe"></i> {{ $job->created_at->diffForHumans() }}</td>
-              <td>
-                <a href="{{ route('jobs.show', [$job->id, $job->slug]) }}" class="btn btn-outline-primary btn-rounded waves-effect btn-sm">Apply</a>
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tbody>
+            @foreach ($jobs as $job)
+              <tr>
+                <td>
+                  <img src="{{ asset('uploads/logo') }}/{{ $job->company->logo }}" width="80" alt="">
+                </td>
+                <td><small>position:</small> <span class="font-weight-bold">{{ $job->position }}</span>
+                  <br>
+                  <i class="fa fa-clock"></i> {{ $job->type }}
+                </td>
+                <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
+                <td><i class="fa fa-globe"></i> {{ $job->created_at->diffForHumans() }}</td>
+                <td>
+                  <a href="{{ route('jobs.show', [$job->id, $job->slug]) }}" class="btn btn-outline-primary btn-rounded waves-effect">Apply</a>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div>
@@ -53,12 +55,12 @@
     <div class="row">
       @foreach ($companies as $company)
         <div class="col-md-4 mb-2">
-          <div class="card">
+          <div class="card h-100 card-body">
             <img src="{{ asset('uploads/logo') }}/{{ $company->logo }}" alt="" class="card-img-top w-50 mx-auto">
             <div class="card-body">
               <h5 class="card-title">{{ $company->cname }}</h5>
               <p class="card-text">{{ Str::limit($company->description, 25) }}</p>
-              <a href="{{ route('company.show', [$company->id, $company->slug]) }}" class="">Read more >></a>
+              <a href="{{ route('company.show', [$company->id, $company->slug]) }}" class="font-weight-bold text-decoration-none">Read more >></a>
             </div>
           </div>
         </div>

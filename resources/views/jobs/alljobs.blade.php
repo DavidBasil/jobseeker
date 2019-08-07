@@ -9,7 +9,7 @@
 
         <div class="row">
           <div class="col-md-4 py-2">
-            <select name="type" class="browser-default custom-select">
+            <select name="type" class="custom-select">
               <option selected="true" disabled>-select-</option>
               <option value="fulltime">fulltime</option>
               <option value="parttime">parttime</option>
@@ -18,11 +18,11 @@
           </div>
 
           <div class="col-md-1 text-center">
-            <span><i class="fas fa-arrows-alt-h cyan-text fa-2x py-2"></i></span>
+            <span><i class="fas fa-arrows-alt-h cyan-text fa-2x py-3"></i></span>
           </div>
 
           <div class="col-md-4 py-2">
-            <select name="category_id" class="browser-default custom-select">
+            <select name="category_id" class="custom-select">
               <option selected="true" disabled>-select-</option>
               @foreach (App\Category::all() as $cat)
                 <option value="{{ $cat->id }}">{{ $cat->name }}</option> 
@@ -31,7 +31,7 @@
             </select>
           </div>
           <div class="col-md-3">
-            <button type="submit" class="btn btn-info btn-rounded float-center mb-4"><i class="fas fa-filter"></i> filter</button>
+            <button type="submit" class="btn btn-outline-info btn-block p-2 mt-2"><i class="fas fa-filter"></i> filter</button>
           </div>
         </div>
 
