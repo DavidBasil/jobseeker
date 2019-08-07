@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
   <div class="container">
     <div class="row">
@@ -18,21 +17,21 @@
         </div>
       </div>
 
-      <table class="table">
+      <table class="table table-hover">
         <tbody>
           @foreach ($jobs as $job)
             <tr>
               <td>
                 <img src="{{ asset('uploads/logo') }}/{{ $job->company->logo }}" width="80" alt="">
               </td>
-              <td>position: {{ $job->position }}
+              <td><small>position:</small> <span class="font-weight-bold">{{ $job->position }}</span>
                 <br>
                 <i class="fa fa-clock"></i> {{ $job->type }}
               </td>
               <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
               <td><i class="fa fa-globe"></i> {{ $job->created_at->diffForHumans() }}</td>
               <td>
-                <a href="{{ route('jobs.show', [$job->id, $job->slug]) }}">Apply</a>
+                <a href="{{ route('jobs.show', [$job->id, $job->slug]) }}" class="btn btn-outline-primary btn-rounded waves-effect btn-sm">Apply</a>
               </td>
             </tr>
           @endforeach
@@ -41,7 +40,7 @@
     </div>
 
     <div>
-      <a href="{{ route('alljobs') }}" class="btn btn-success btn-block">Browse all jobs</a>
+      <a href="{{ route('alljobs') }}" class="btn btn-outline-primary btn-block btn-rounded mt-4">Browse all jobs</a>
     </div>
 
   </div>
@@ -49,21 +48,21 @@
   <hr>
 
   <!-- featured companies -->
-  <div class="container mt-4">
-    <h2>Featured Companies</h2>
+  <div class="container mt-5">
+    <h3 class="light-blue-text mb-3">Featured Companies</h3>
     <div class="row">
-    @foreach ($companies as $company)
-      <div class="col-md-4 mb-2">
-        <div class="card">
-          <img src="{{ asset('uploads/logo') }}/{{ $company->logo }}" alt="" class="card-img-top w-75 mx-auto">
-          <div class="card-body">
-            <h5 class="card-title">{{ $company->cname }}</h5>
-            <p class="card-text">{{ Str::limit($company->description, 25) }}</p>
-            <a href="{{ route('company.show', [$company->id, $company->slug]) }}" class="btn btn-primary">View</a>
+      @foreach ($companies as $company)
+        <div class="col-md-4 mb-2">
+          <div class="card">
+            <img src="{{ asset('uploads/logo') }}/{{ $company->logo }}" alt="" class="card-img-top w-50 mx-auto">
+            <div class="card-body">
+              <h5 class="card-title">{{ $company->cname }}</h5>
+              <p class="card-text">{{ Str::limit($company->description, 25) }}</p>
+              <a href="{{ route('company.show', [$company->id, $company->slug]) }}" class="">Read more >></a>
+            </div>
           </div>
         </div>
-      </div>
-    @endforeach
+      @endforeach
     </div>
   </div>
 
