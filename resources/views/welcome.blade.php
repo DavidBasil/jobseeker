@@ -2,18 +2,18 @@
 @section('content')
   <div class="container">
     <div class="row">
+      @if (session('success'))
+        <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+          {{ session('success') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endif
       <h2 class="mb-3">Recent Jobs</h2>
 
       <div class="row">
         <div class="col-md-12">
-          @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('success') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @endif
         </div>
       </div>
 
@@ -32,6 +32,13 @@
                 <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
                 <td><i class="fa fa-globe"></i> {{ $job->created_at->diffForHumans() }}</td>
                 <td>
+
+                  @auth
+                    @if (Auth::user()->user_type == 'employer')
+                    <a href="{{ route('jobs.show', [$job->id, $job->slug]) }}" class="btn btn-outline-primary btn-rounded waves-effect">View</a>
+                    @endif
+                  @endauth
+
                   <a href="{{ route('jobs.show', [$job->id, $job->slug]) }}" class="btn btn-outline-primary btn-rounded waves-effect">Apply</a>
                 </td>
               </tr>

@@ -61,13 +61,13 @@
                   </li>
                 @endif
               @else
-                @if (Auth::user()->user_type=='employer')
-                <li class="nav-item">
-                  <a href="{{ route('jobs.create') }}" class="nav-link">Post a job</a>
-                </li>
+                @if (Auth::user()->user_type=="employer")
+                  <li class="nav-item">
+                    <a href="{{ route('jobs.create') }}" class="nav-link">Post a job</a>
+                  </li>
                 @endif
                 <li class="nav-item dropdown">
-                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @if (Auth::user()->user_type=="employer")
                       {{ Auth::user()->company->cname }} 
                     @else
@@ -101,64 +101,64 @@
         </div>
       </nav>
 
-      <main class="mt-4">
+      <main class="my-4">
       @yield('content')
       </main>
     </div>
 
-<!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4 mt-3">
+    <!-- Footer -->
+    <footer class="page-footer font-small stylish-color-dark pt-4 mt-3">
 
 
-  <hr>
+      <hr>
 
-  <!-- Call to action -->
-  <ul class="list-unstyled list-inline text-center py-2">
-    <li class="list-inline-item">
-      <h5 class="mb-1">Register for free</h5>
-    </li>
-    <li class="list-inline-item">
-      <a href="{{ route('register') }}" class="btn btn-danger btn-rounded">Sign up as a seeker</a>
-      <a href="{{ route('employer.register') }}" class="btn btn-danger btn-rounded">Singn up as an employer</a>
-    </li>
-  </ul>
-  <!-- Call to action -->
+      <!-- Call to action -->
+      <ul class="list-unstyled list-inline text-center py-2">
+        <li class="list-inline-item">
+          <h5 class="mb-1">Register for free</h5>
+        </li>
+        <li class="list-inline-item">
+          <a href="{{ route('register') }}" class="btn btn-danger btn-rounded">Sign up as a seeker</a>
+          <a href="{{ route('employer.register') }}" class="btn btn-danger btn-rounded">Singn up as an employer</a>
+        </li>
+      </ul>
+      <!-- Call to action -->
 
-  <hr>
+      <hr>
 
-  <!-- Social buttons -->
-  <ul class="list-unstyled list-inline text-center">
-    <li class="list-inline-item">
-      <a class="btn-floating btn-fb mx-1">
-        <i class="fab fa-facebook-f"> </i>
-      </a>
-    </li>
-    <li class="list-inline-item">
-      <a class="btn-floating btn-tw mx-1">
-        <i class="fab fa-twitter"> </i>
-      </a>
-    </li>
-    <li class="list-inline-item">
-      <a class="btn-floating btn-gplus mx-1">
-        <i class="fab fa-google-plus-g"> </i>
-      </a>
-    </li>
-    <li class="list-inline-item">
-      <a class="btn-floating btn-li mx-1">
-        <i class="fab fa-linkedin-in"> </i>
-      </a>
-    </li>
-  </ul>
-  <!-- Social buttons -->
+      <!-- Social buttons -->
+      <ul class="list-unstyled list-inline text-center">
+        <li class="list-inline-item">
+          <a class="btn-floating btn-fb mx-1">
+            <i class="fab fa-facebook-f"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-tw mx-1">
+            <i class="fab fa-twitter"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-gplus mx-1">
+            <i class="fab fa-google-plus-g"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-li mx-1">
+            <i class="fab fa-linkedin-in"> </i>
+          </a>
+        </li>
+      </ul>
+      <!-- Social buttons -->
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="">David Basil</a>
-  </div>
-  <!-- Copyright -->
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="">David Basil</a>
+      </div>
+      <!-- Copyright -->
 
-</footer>
-<!-- Footer -->
+    </footer>
+    <!-- Footer -->
 
     <!-- JQuery -->
     {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}

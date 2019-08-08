@@ -23,8 +23,15 @@ class CompanyController extends Controller
         return view('company.create');
     }
 
-    public function store(){
+    public function store(Request $request){
         $user_id = auth()->user()->id;
+        $this->validate($request, [
+            'address' => 'required',
+            'phone_number' => 'required',
+            'website' => 'required',
+            'slogan' => 'required',
+            'description' => 'required'
+        ]);
 
         Company::where('user_id', $user_id)->update([
             'address' => request('address'),
@@ -39,6 +46,9 @@ class CompanyController extends Controller
 
     public function coverphoto(Request $request)
     {
+        $this->validate($request, [
+            'cover_photo' => 'required|mimes:jpeg,jpg,png'
+        ]);
         $user_id = auth()->user()->id;
         if($request->hasFile('cover_photo')){
             $file = $request->file('cover_photo');
@@ -56,6 +66,9 @@ class CompanyController extends Controller
 
     public function logo(Request $request)
     {
+        $this->validate($request, [
+            'logo' => 'required|mimes:png,jpg,jpeg|max:5000'
+        ]);
         $user_id = auth()->user()->id;
         if($request->hasFile('logo')){
             $file = $request->file('logo');

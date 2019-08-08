@@ -5,8 +5,8 @@
     <div class="row">
       <div class="col-md-8 offset-md-2">
 
-        <div class="card">
-          <div class="card-header">Add a Job</div>
+        <div class="card border-light">
+          <div class="card-header bg-light border-right-0 border-left-0 font-weight-bold text-uppercase text-center mb-4">Add a Job</div>
 
           <div class="card-body">
 
@@ -84,7 +84,7 @@
               </div>
 
               <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block mt-4">Submit</button>
+                <button type="submit" class="btn btn-info btn-block mt-4">Submit</button>
               </div>
 
             </form>

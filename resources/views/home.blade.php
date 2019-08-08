@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+            <div class="card border-light">
+                <div class="card-header border-left-0 border-right-0 bg-light text-uppercase text-center">Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <span class="text-danger text-center d-block">You are logged in!</span>
                 </div>
             </div>
         </div>

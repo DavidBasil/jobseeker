@@ -6,24 +6,24 @@
   <div class="row">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ $job->title }}</div>
+        <div class="card-header bg-dark text-light">{{ $job->title }}</div>
         <div class="card-body">
-          <h3>Description</h3>
+          <h3><u>Description</u></h3>
           <p>{{ $job->description }}</p>
-          <h3>Duties</h3>
+          <h3><u>Duties</u></h3>
           <p>{{ $job->roles }}</p>
         </div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card">
-        <div class="card-header">short info</div>
+        <div class="card-header text-uppercase bg-dark text-light">short info</div>
         <div class="card-body">
           <p>Company: <a href="{{ route('company.show', [$job->company->id, $job->company->slug]) }}">{{ $job->company->cname }}</a></p>
-          <p>Employment type: {{ $job->type }}</p>
-          <p>Position: {{ $job->position }}</p>
-          <p>Added: {{ $job->created_at->diffForHumans() }}</p>
-          <p>Last Date: {{ date('F d, Y', strtotime($job->last_date))}}</p>
+          <p>Employment type: <span class="font-weight-bold">{{ $job->type }}</span></p>
+          <p>Position: <span class="font-weight-bold">{{ $job->position }}</span></p>
+          <p>Added: <span class="font-weight-bold">{{ $job->created_at->diffForHumans() }}</span></p>
+          <p>Last Date: <span class="font-weight-bold">{{ date('F d, Y', strtotime($job->last_date))}}</span></p>
         </div>
       </div>
 
@@ -31,16 +31,20 @@
         <form action="{{ route('apply', [$job->id]) }}" method="post">
           @csrf
           @if (session('message'))
-          <div class="alert alert-success mt-2">
+          <div class="alert alert-danger mt-2 text-center">
             <p>{{ session('message') }}</p>
           </div> 
           @endif
           @if ($job->checkApply())
-          <button type="submit" class="btn btn-success btn-block mt-2" disabled>Applied</button>
+          <button type="submit" class="btn btn-info btn-block mt-2" disabled>Applied</button>
           @else
-          <button type="submit" class="btn btn-success btn-block mt-2">Apply</button>
+          <button type="submit" class="btn btn-info btn-block mt-2">Apply</button>
           @endif
         </form>
+        @else
+          <div class="alert alert-danger mt-2 text-center">
+            <a href="{{ route('login') }}">Login</a> to apply to the job
+          </div>
       @endif
 
     </div>
